@@ -1,0 +1,114 @@
+li {
+    display: flex;
+    justify-content: space-between;
+    margin-top: .5rem;
+    border-radius: 4px;
+    background-color: white;
+    text-align: left;
+    overflow-wrap: break-word;
+    
+    .task {
+        width: 28rem;
+        display: flex;
+        flex-direction: column;
+        padding-left: 1rem;
+        h2 {
+            margin: 15px 0;
+        }
+        span {
+            margin: 2px 0;
+            margin-bottom: 4px;
+        }
+    }
+    .optionsTask {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1;
+        align-items: flex-start;
+        padding-left: .3rem;
+
+        button {
+            cursor: pointer;
+            margin-top: 5px;
+            padding: 3px;
+            background-color: transparent;
+        }
+    }
+    
+    // estilização da edição
+
+    .addNewTask {
+        margin-top: 8px;
+        display: flex;
+        flex-direction: column;
+        width: 30rem;
+        background-color: white;
+        padding: 1.1rem 0;
+        border-radius: 8px;
+        input {
+            outline: none;
+            &:first-child {
+                font-weight: 600;
+                font-size: 1.6rem; 
+                height: 2.5rem;
+                padding-left: 5px;
+            }
+            &:nth-child(2) {
+                font-weight: 400;
+                font-size: 1rem; 
+                height: 2.5rem;
+                font-size: 1.2rem;
+                padding-left: 5px;
+                margin: 3px 0;
+                background-color: #e6e6e6a9;
+                border-top: 1px solid black;
+            }
+        }
+        span {
+            cursor: pointer;
+            margin: 10px;
+            width: 4rem;
+            text-decoration: underline;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+        .footerAddTask {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 12px;
+    
+            button {
+                font-size: .9rem;
+                font-weight: 550;
+                border-radius: 5px;
+                cursor: pointer;
+                padding: 0.4rem 1rem;
+                box-shadow: rgb(0 0 0 / 20%) 0px 2px 2px;
+                
+                &:first-child {
+                    margin: 0 .5rem;
+                    background-color: #009732;
+                    color: whitesmoke;
+                }
+                &:last-child {
+                    background-color: #222222;
+                    color: whitesmoke;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 530px) {
+    li {
+        .task {
+            width: 82vw;
+        }
+        .addNewTask {
+            width: 90vw;
+        }
+    }
+}
