@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { usePomodoroContext } from "../../../contexts/PomodoroContext.jsx";
 import { useTaskListContext } from "../../../contexts/TaskListContext";
 
 import { FiDelete } from "react-icons/fi";
@@ -7,6 +8,8 @@ import { RiEditFill } from "react-icons/ri";
 import styles from "./Task.module.scss";
 
 const Task = ({ task }) => {
+  const { darkMode } = usePomodoroContext();
+
   const { deleteTask, updateTask } = useTaskListContext();
   const [changeTask, setChangeTask] = useState(false);
   const [newValueTask, setNewValueTask] = useState('i');
@@ -35,7 +38,7 @@ const Task = ({ task }) => {
     <li>
       {!changeTask ? (
         <>
-          <div className={styles.task}>
+          <div style={darkMode ? {backgroundColor: '#640054'} : null} className={styles.task}>
             <h2>{task.details.task}</h2>
             <span>{task.details?.description}</span>
           </div>

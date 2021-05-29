@@ -27,7 +27,7 @@ const Pomodoro = () => {
      style={darkMode ? {backgroundColor: '#080808', color: "white"} : null}
      className={styles.pomodoro}>
        <div 
-        style={darkMode ? {backgroundColor: '#3a2236', color: "white"} : null}
+        style={darkMode ? {backgroundColor: '#640054', color: "white"} : null}
         className={styles.divPomodoro}>
         <div className={styles.header}>
           {toggleBreak ? <h1>Pomodoro</h1> : <h1>Descanso</h1>}

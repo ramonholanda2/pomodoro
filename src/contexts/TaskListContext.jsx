@@ -34,17 +34,17 @@ export function TaskListContextProvider({ children }) {
   }
 
   function saveTask() {
-    const createdAt = Number(new Date());
-    
-    const task = {
-      task: valueTask,
-      description: valueNote,
-      createdAt: createdAt
+    if(valueTask !== '') {
+      const createdAt = Number(new Date());
+      
+      const task = {
+        task: valueTask,
+        description: valueNote,
+        createdAt: createdAt
+      }
+      
+      db.collection('tasks').add(task)
     }
-    
-    db.collection('tasks').add(task)
-      .then((docRef) => console.log('sucess', docRef.id))
-      .catch(error => console.log('error ', error))
 
     cancelNewNotes();
   }
@@ -59,8 +59,8 @@ export function TaskListContextProvider({ children }) {
 
   useEffect(() => {
     db.collection("tasks")
-     .where("createdAt", ">=", 1622218106043)
-     .orderBy("createdAt", "asc").onSnapshot((snapshot) => {
+      .where("createdAt", ">=", 0)
+      .orderBy("createdAt", "asc").onSnapshot((snapshot) => {
       setTasks(
         snapshot.docs.map((doc) => ({
           id: doc.id,

@@ -37,7 +37,7 @@ export function PomodoroContextProvider({ children }) {
   }
   
   function nextPomodoro() {
-    if (window.confirm("Ramon")) {
+    if (window.confirm("Deseja pular este ciclo?")) {
       restPomodoro();
     } else {
       console.log("Jack");

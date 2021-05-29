@@ -2,10 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    min-height: 50vh;    
+    transition: background-color ease-in-out 0.3s;
 
     h1 {
         font-size: 2.7rem;
+        margin: 1rem 0;
     }
 
     .todo {
