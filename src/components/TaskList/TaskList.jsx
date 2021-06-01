@@ -59,7 +59,7 @@ const TaskList = () => {
             className={!addNewTask ? styles.addTaskBtn : styles.hiddenBtn}
             onClick={() => addTask()}
           >
-            Add Task
+            Adicionar
           </button>
         </div>
       </div>

@@ -12,6 +12,12 @@ export function PomodoroContextProvider({ children }) {
   const [on, setOn] = useState(false);
   let cont;
 
+  function showNotification() {
+    if (Notification.permission === "granted") {
+      new Notification(toggleBreak ? 'O ciclo pomodoro terminou!!!' : 'O Tempo de descanso acabou!!!');
+    }
+  }
+
   function onPomodoro() {
     setOn(true);
   }
@@ -20,22 +26,24 @@ export function PomodoroContextProvider({ children }) {
     clearTimeout(cont);
     setOn(false);
   }
-  
+
   function restPomodoro() {
+    showNotification();
     pausePomodoro();
     setToggleBreak(!toggleBreak);
     setSeconds(0);
     toggleBreak ? setMinutes(5) : setMinutes(25);
   }
-  
+
   function renderOptions() {
     setOptions(!options);
   }
-  
+
   function toggleDarkMode() {
     setDarkMode(!darkMode);
+    (localStorage.setItem('darkMode', !darkMode));
   }
-  
+
   function nextPomodoro() {
     if (window.confirm("Deseja pular este ciclo?")) {
       restPomodoro();
@@ -58,6 +66,11 @@ export function PomodoroContextProvider({ children }) {
       }, 1000);
     }
   }, [seconds, on]);
+
+  useEffect(() => {
+    Notification.requestPermission();
+    setDarkMode(JSON.parse(localStorage.getItem('darkMode')));
+  }, []);
 
   return (
     <PomodoroContext.Provider
