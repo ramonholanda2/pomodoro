@@ -41,6 +41,11 @@
             box-shadow: 0px 4px 31px -6px #3a0505bf;
 
             margin-bottom: 5rem;
+            transition: filter .2s ease-in-out;
+
+            &:hover {
+                filter: brightness(90%);
+            }
         }
         .hiddenBtn {
             display: none;

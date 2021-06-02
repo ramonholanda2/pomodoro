@@ -13,9 +13,7 @@ export function PomodoroContextProvider({ children }) {
   let cont;
 
   function showNotification() {
-    if (Notification.permission === "granted") {
-      new Notification(toggleBreak ? 'O ciclo pomodoro terminou!!!' : 'O Tempo de descanso acabou!!!');
-    }
+    new Notification(toggleBreak ? 'O ciclo pomodoro terminou!!!' : 'O Tempo de descanso acabou!!!');
   }
 
   function onPomodoro() {
@@ -28,7 +26,7 @@ export function PomodoroContextProvider({ children }) {
   }
 
   function restPomodoro() {
-    showNotification();
+    if(Notification.permission === 'granted') showNotification();
     pausePomodoro();
     setToggleBreak(!toggleBreak);
     setSeconds(0);
@@ -68,7 +66,10 @@ export function PomodoroContextProvider({ children }) {
   }, [seconds, on]);
 
   useEffect(() => {
-    Notification.requestPermission();
+    if (('serviceWorker' in navigator) && ('PushManager' in window)) { 
+        Notification.requestPermission();
+    }
+    
     setDarkMode(JSON.parse(localStorage.getItem('darkMode')));
   }, []);
 
